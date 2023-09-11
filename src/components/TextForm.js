@@ -29,7 +29,9 @@ const TextForm = (props) => {
   return (
     <div>
       <div className="form-group mt-3">
-        <h2>{props.heading}</h2>
+        <h2 style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          {props.heading}
+        </h2>
         <textarea
           className="form-control"
           id="myBox"
@@ -37,6 +39,10 @@ const TextForm = (props) => {
           value={text}
           name="text"
           onChange={handleChange}
+          style={{
+            backgroundColor: props.mode === "dark" ? "black" : "white",
+            color: props.mode === "dark" ? "white" : "black",
+          }}
         ></textarea>
       </div>
       <div className="buttons">
@@ -66,6 +72,23 @@ const TextForm = (props) => {
         <button type="button" class="btn btn-danger mx-3" onClick={clear}>
           Reset Text
         </button>
+      </div>
+      <div className="container">
+        <h1 style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          Your text summary
+        </h1>
+        <p style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          {text.split(" ").length}Words and {text.length}charters
+        </p>
+        <p style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          {0.008 * text.split(" ").length} Minuts take to read{" "}
+        </p>
+        <h3 style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          Preview
+        </h3>
+        <p style={{ color: props.mode === "dark" ? "white" : "black" }}>
+          {text}
+        </p>
       </div>
     </div>
   );

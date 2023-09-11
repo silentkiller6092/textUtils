@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 const NavBar = (props) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      >
         <a className="navbar-brand" href="#">
           {props.title}
         </a>
@@ -32,20 +35,15 @@ const NavBar = (props) => {
               </a>
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
+          <div className="custom-control custom-switch">
             <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              type="checkbox"
+              className="custom-control-input"
+              id="customSwitch1"
+              onClick={props.toogleMode}
             />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
+            <label class="custom-control-label" htmlFor="customSwitch1"></label>
+          </div>
         </div>
       </nav>
     </div>
